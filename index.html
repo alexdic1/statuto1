@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home</title>
+  <style>
+    :root{
+      --fg:#f4f2ea;
+      --shadow: rgba(0,0,0,.45);
+    }
+    html,body{height:100%; margin:0;}
+    body{
+      background:#000;
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      overflow:hidden;
+    }
+    .wrap{
+      position:relative;
+      height:100%;
+      width:100%;
+    }
+    video#bgvid{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: contain; /* video ben visibile, senza tagli */
+      background:#000;
+    }
+    /* leggero gradiente SOLO in basso per leggere il bottone */
+    .bottom-fade{
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:22vh;
+      background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0));
+      pointer-events:none;
+    }
+    .enter{
+      position:absolute;
+      left:50%;
+      bottom:6vh;
+      transform:translateX(-50%);
+      z-index:2;
+      text-decoration:none;
+      color:var(--fg);
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:14px 26px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 12px 32px var(--shadow);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .enter:hover{
+      transform:translateX(-50%) scale(1.03);
+      background: rgba(0,0,0,.5);
+      border-color: rgba(255,255,255,.55);
+    }
+    .enter:active{
+      transform:translateX(-50%) scale(.99);
+    }
+    /* mobile: bottone un filo più su */
+    @media (max-width: 600px){
+      .enter{bottom:7vh; padding:13px 22px;}
+      .bottom-fade{height:26vh;}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <video id="bgvid" autoplay muted loop playsinline preload="auto">
+      <source src="intro.mp4" type="video/mp4" />
+    </video>
+
+    <div class="bottom-fade" aria-hidden="true"></div>
+
+    <a class="enter" href="statuto.html">Entra</a>
+  </main>
+</body>
+</html>
