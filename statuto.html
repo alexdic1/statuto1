@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Statuto del Gruppo • Regni Rinascimentali</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg0:#07070a;
+      --bg1:#0e0e14;
+      --ink:#eee9df;
+      --muted:rgba(238,233,223,.75);
+      --line:rgba(238,233,223,.14);
+      --gold:rgba(216,178,90,.95);
+      --gold2:rgba(216,178,90,.22);
+      --shadow: 0 18px 45px rgba(0,0,0,.55);
+      --radius:18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(216,178,90,.12), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(120,180,255,.08), transparent 52%),
+        radial-gradient(900px 700px at 50% 120%, rgba(216,178,90,.10), transparent 58%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      line-height:1.7;
+    }
+    a{color:var(--gold); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,7,10,.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:240px;}
+    .sigil{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid var(--gold2);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(216,178,90,.55), rgba(216,178,90,.14) 55%, rgba(0,0,0,.0) 70%),
+        linear-gradient(135deg, rgba(216,178,90,.20), rgba(255,255,255,.03));
+      box-shadow: 0 10px 25px rgba(0,0,0,.45);
+    }
+    .brand h1{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.9px;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .brand .sub{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.3px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--ink);
+      font-weight:700;
+      font-size:13px;
+    }
+    .btn:hover{background: rgba(255,255,255,.08); text-decoration:none}
+
+    main{max-width:var(--max); margin:0 auto; padding:22px 16px 46px;}
+
+    .hero{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{padding:22px 18px 16px; position:relative;}
+    .ribbon{
+      position:absolute; inset:auto -40px 18px auto;
+      transform: rotate(10deg);
+      padding:8px 48px;
+      background: rgba(216,178,90,.14);
+      border:1px solid rgba(216,178,90,.26);
+      color:rgba(255,235,195,.95);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:800;
+      letter-spacing:.6px;
+      font-size:12px;
+    }
+    .title{margin:0 0 6px; font-size:28px; line-height:1.15; font-weight:900;}
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      max-width: 70ch;
+    }
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:12px; color: var(--muted);
+    }
+    .tag{border:1px solid rgba(238,233,223,.12); background: rgba(255,255,255,.03); padding:6px 10px; border-radius:999px;}
+    .divider{height:1px; background:var(--line); margin:16px 0 0;}
+
+    .grid{display:grid; grid-template-columns: 1fr; gap:16px; margin-top:16px;}
+    @media (min-width: 900px){ .grid{grid-template-columns: 320px 1fr;} }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .card .pad{padding:16px}
+    .card h2{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: rgba(255,235,195,.92);
+    }
+    .toc a{
+      display:block;
+      padding:10px 12px;
+      border-top:1px solid rgba(238,233,223,.10);
+      color:var(--ink);
+      font-weight:700;
+      font-size:13px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .toc a:first-child{border-top:none}
+    .toc a:hover{background: rgba(216,178,90,.08); text-decoration:none}
+
+    article{padding: 18px;}
+    section{padding:18px; border-top:1px solid rgba(238,233,223,.10); scroll-margin-top: 88px;}
+    section:first-child{border-top:none}
+    section h3{margin:0 0 10px; font-size:18px; font-weight:900;}
+
+    ul{margin: 8px 0 0 18px;}
+    li{margin: 6px 0;}
+
+    .callout{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(216,178,90,.22);
+      background: rgba(216,178,90,.08);
+      color: rgba(255,235,195,.95);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+    }
+    .founders{
+      columns: 1;
+      column-gap: 18px;
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    @media (min-width: 700px){ .founders{columns: 2;} }
+    .founders li{break-inside:avoid}
+
+    footer{
+      max-width:var(--max);
+      margin: 18px auto 32px;
+      padding: 0 16px;
+      color: var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:12px;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <div class="sigil" aria-hidden="true"></div>
+        <div>
+          <h1>Statuto del Gruppo</h1>
+          <div class="sub">Regni Rinascimentali • documento di gioco (GDR)</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="#art1">Art. 1</a>
+        <a class="btn" href="#art4">Direttivo</a>
+        <a class="btn" href="#art6">Obiettivi</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="ribbon">SOLO GIOCO • NIENTE DRAMA</div>
+        <h2 class="title">STATUTO DEL GRUPPO</h2>
+        <p class="lead">
+          Il presente statuto regola la vita del gruppo <strong>esclusivamente</strong> all’interno del gioco <em>Regni Rinascimentali</em>.
+          Serve a mantenere ordine, rispetto e azione… senza trasformare il gioco in conflitto personale.
+        </p>
+        <div class="meta">
+          <span class="tag">GDR</span>
+          <span class="tag">Rispetto (Art. 2)</span>
+          <span class="tag">Decisioni a maggioranza</span>
+          <span class="tag">Reggimenti (max 8)</span>
+        </div>
+        <div class="divider"></div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="pad">
+              <h2>Indice</h2>
+            </div>
+            <nav class="toc" aria-label="Indice Statuto">
+              <a href="#art1">Art. 1 — Natura del gruppo</a>
+              <a href="#art2">Art. 2 — Rispetto tra i membri</a>
+              <a href="#art3">Art. 3 — Obiettivo del gruppo</a>
+              <a href="#art4">Art. 4 — Direttivo e decisioni</a>
+              <a href="#art5">Art. 5 — Reggimenti</a>
+              <a href="#art6">Art. 6 — Coordinamento e obiettivi</a>
+            </nav>
+          </div>
+
+          <div class="card">
+            <article aria-label="Testo dello statuto">
+              <section id="art1">
+                <h3>Art. 1 — Natura del gruppo</h3>
+                <p>
+                  Il gruppo nasce e opera esclusivamente all’interno del gioco <strong>Regni Rinascimentali</strong>.
+                  Ogni attività, ruolo o decisione ha finalità ludiche e di gioco di ruolo (GDR).
+                  Le dinamiche di gioco non devono mai trasformarsi in conflitti personali reali.
+                </p>
+                <div class="callout">
+                  Si ricorda a tutti i membri che: <strong>è un gioco</strong>; si sbaglia e si impara; lo scopo è stare bene insieme divertendosi.
+                </div>
+              </section>
+
+              <section id="art2">
+                <h3>Art. 2 — Rispetto tra i membri</h3>
+                <p>Tutti i membri del gruppo sono tenuti a mantenere un comportamento rispettoso.</p>
+                <p>Non sono tollerati:</p>
+                <ul>
+                  <li>insulti personali,</li>
+                  <li>comportamenti tossici,</li>
+                  <li>persecuzioni o discriminazioni.</li>
+                  <li>Carwyn</li>
+                </ul>
+                <p>Il rispetto non implica falso buonismo: significa civiltà e maturità, anche nel dissenso.</p>
+              </section>
+
+              <section id="art3">
+                <h3>Art. 3 — Obiettivo del gruppo (versione aggiornata)</h3>
+                <p>L’obiettivo principale del gruppo è il <strong>divertimento collettivo</strong>.</p>
+                <p>Il gruppo rifiuta:</p>
+                <ul>
+                  <li>moralismi inutili,</li>
+                  <li>atteggiamenti da “maestrini”,</li>
+                  <li>falso buonismo.</li>
+                </ul>
+                <p>
+                  Per falso buonismo e moralismo si intende in particolare questo:
+                  nel momento in cui il Direttivo (membri fondatori) discute e vota un’azione, e questa viene approvata dalla maggioranza,
+                  l’azione viene portata avanti senza polemiche, prediche o blocchi interni, purché sia consentita dalle regole del gioco.
+                </p>
+                <p><strong>Esempi:</strong> se il gruppo decide di compiere azioni contro lo status quo, assaltare municipi, o qualsiasi altra azione prevista e permessa dal gioco, allora: <strong>si fa</strong>.</p>
+                <p>
+                  Il gioco prevede anche conflitto, strategia, pressione e scelte forti: il gruppo le accetta come parte della componente ludica,
+                  sempre nel rispetto dell’Art. 2.
+                </p>
+              </section>
+
+              <section id="art4">
+                <h3>Art. 4 — Direttivo e decisioni</h3>
+                <p>
+                  Il gruppo è guidato dal gruppo fondatore di seguito chiamato <strong>Direttivo</strong>.
+                  Le decisioni vengono:
+                </p>
+                <ol>
+                  <li>proposte,</li>
+                  <li>discusse,</li>
+                  <li>votate dal Direttivo.</li>
+                </ol>
+                <p>Le decisioni approvate dalla maggioranza sono vincolanti e accettate da tutti.</p>
+
+                <p><strong>Il Gruppo Fondatori è composto da:</strong></p>
+                <ul class="founders">
+                  <li>Auraelettra</li>
+                  <li>Ispanicoii</li>
+                  <li>Kagome93</li>
+                  <li>Laura_pia</li>
+                  <li>Eragon1</li>
+                  <li>Iulia_</li>
+                  <li>Rodnilla</li>
+                  <li>Actea</li>
+                  <li>Pazzzia</li>
+                  <li>Sirio9</li>
+                  <li>R0muald0</li>
+                </ul>
+
+                <p>Il Direttivo può essere ampliato includendo membri che si distinguono per:</p>
+                <ul>
+                  <li>attivismo,</li>
+                  <li>presenza costante,</li>
+                  <li>contributo concreto al gruppo.</li>
+                </ul>
+
+                <p>Un membro del Direttivo può perdere il ruolo in caso di inattività prolungata o mancato contributo.</p>
+
+                <div class="callout">
+                  <strong>Integrazione ed esclusione dal Direttivo</strong><br/>
+                  La proposta di integrare un nuovo membro può essere avanzata da qualunque membro del Direttivo, purché motivata.<br/>
+                  La proposta di esclusione può essere avanzata da qualunque membro del Direttivo, a condizione che venga motivata in modo chiaro e concreto
+                  (es. inattività, assenza prolungata, comportamento dannoso o mancato contributo).<br/>
+                  In entrambi i casi, l’ingresso o l’esclusione diventa effettiva solo dopo votazione a maggioranza del Direttivo.
+                </div>
+              </section>
+
+              <section id="art5">
+                <h3>Art. 5 — Reggimenti</h3>
+                <p>Il gruppo è suddiviso in <strong>Reggimenti</strong>.</p>
+                <p>Ogni reggimento:</p>
+                <ul>
+                  <li>è composto da un massimo di 8 membri;</li>
+                  <li>ha un Capo Reggimento.</li>
+                </ul>
+                <p>Il Capo Reggimento ha il compito di:</p>
+                <ul>
+                  <li>raccogliere proposte o lamentele,</li>
+                  <li>aiutare i membri del proprio reggimento,</li>
+                  <li>facilitare comunicazione e integrazione.</li>
+                </ul>
+              </section>
+
+              <section id="art6">
+                <h3>Art. 6 — Coordinamento e obiettivi</h3>
+                <p>I Capi Reggimento e il Direttivo si riuniscono per proporre e coordinare le azioni del gruppo.</p>
+
+                <p><strong>Obiettivi a breve termine:</strong></p>
+                <ul>
+                  <li>individuare una città dove mettere radici;</li>
+                  <li>reclutare e seguire i nuovi ingressi;</li>
+                  <li>creare una filiera organizzata;</li>
+                  <li>costituire una cassa comune.</li>
+                </ul>
+
+                <p><strong>Obiettivo a lungo termine:</strong></p>
+                <ul>
+                  <li>arrivare alla gestione di un intero Ducato, con struttura e organizzazione adeguata.</li>
+                </ul>
+
+                <div class="callout" id="fine">
+                  <strong>Chiusura</strong><br/>
+                  Le regole esistono per farci giocare meglio: ordine, rispetto, azione.
+                </div>
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Documento di gioco (GDR) per l’organizzazione interna del gruppo in Regni Rinascimentali.
+  </footer>
+</body>
+</html>
